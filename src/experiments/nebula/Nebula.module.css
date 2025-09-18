@@ -1,0 +1,113 @@
+/* PrismFlow.module.css — abstrakt, levande, men elegant */
+.root {
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    isolation: isolate;
+
+    /* Bas: kylig mörk duk + två subtila glöd */
+    background:
+        radial-gradient(60% 50% at 18% 18%, rgba(255, 210, 140, .08) 0%, transparent 70%),
+        radial-gradient(60% 55% at 82% 78%, rgba(120, 220, 255, .08) 0%, transparent 70%),
+        linear-gradient(180deg, #0f1218 0%, #0b1119 50%, #0a0e14 100%);
+    color: #e8eef8;
+}
+
+/* Lager 1: konisk färgfilm som rör sig (prismatisk vätska) */
+.root::before {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    pointer-events: none;
+    z-index: 0;
+
+    /* Justerbara rattar */
+    --strength: .22;
+    /* total intensitet .12–.30 */
+    --blur: 28px;
+    /* hur mjukt färgerna blendas */
+
+    background:
+        conic-gradient(from 0deg at 50% 50%,
+            rgba(255, 90, 120, var(--strength)) 0deg,
+            rgba(255, 210, 140, var(--strength)) 60deg,
+            rgba(120, 255, 210, var(--strength)) 130deg,
+            rgba(120, 180, 255, var(--strength)) 200deg,
+            rgba(190, 140, 255, var(--strength)) 270deg,
+            rgba(255, 90, 120, var(--strength)) 360deg);
+    filter: blur(var(--blur)) saturate(.95);
+    mix-blend-mode: screen;
+
+    animation: pf-spin 56s linear infinite, pf-breathe 18s ease-in-out infinite;
+    transform-origin: 50% 50%;
+}
+
+/* Lager 2: fin textur + svag diagonal sheen */
+.root::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+
+    /* SVG-brus som grain (mycket svagt) + diagonal glans */
+    background:
+        url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'>\
+<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='table' tableValues='0 0 .045 0'/></feComponentTransfer></filter>\
+<rect width='100%' height='100%' filter='url(%23n)'/></svg>") 0 0/140px 140px repeat,
+        linear-gradient(22deg, rgba(255, 255, 255, .06), transparent 40%),
+        linear-gradient(-18deg, rgba(255, 255, 255, .03), transparent 55%);
+    mix-blend-mode: soft-light;
+    animation: pf-sheen 40s ease-in-out infinite;
+    opacity: .8;
+}
+
+/* Keyframes: långsam rotation + mikroskopisk andning + sheen-drift */
+@keyframes pf-spin {
+    from {
+        transform: rotate(0deg) scale(1.02);
+    }
+
+    to {
+        transform: rotate(360deg) scale(1.02);
+    }
+}
+
+@keyframes pf-breathe {
+
+    0%,
+    100% {
+        transform: rotate(var(--rot, 0deg)) scale(1.02);
+    }
+
+    50% {
+        transform: rotate(var(--rot, 0deg)) scale(1.06);
+    }
+}
+
+@keyframes pf-sheen {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: translate3d(0, -2%, 0);
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* Respekt för minskad rörelse */
+@media (prefers-reduced-motion: reduce) {
+
+    .root::before,
+    .root::after {
+        animation: none;
+    }
+}
