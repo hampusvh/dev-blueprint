@@ -1,0 +1,11 @@
+.root {
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 60%),
+        linear-gradient(180deg, #4c2344 0%, #2a1d3b 14%, #13172a 38%, #0d0f17 100%);
+}

@@ -1,0 +1,49 @@
+.root {
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    background:
+        radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 60%),
+        linear-gradient(180deg, #4c2344 0%, #2a1d3b 14%, #13172a 38%, #0d0f17 100%);
+    color: #eef1f7;
+}
+
+.root::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    --a1: .12;
+    --a2: .10;
+    --a3: .08;
+    background:
+        radial-gradient(1000px 380px at 20% 12%, rgba(226, 70, 131, var(--a1)), transparent 60%),
+        radial-gradient(900px 340px at 78% 2%, rgba(120, 180, 255, var(--a2)), transparent 60%),
+        radial-gradient(1200px 420px at 50% 18%, rgba(180, 120, 255, var(--a3)), transparent 60%);
+    mix-blend-mode: screen;
+    animation: auroraShift 36s linear infinite;
+    z-index: 0;
+}
+
+@keyframes auroraShift {
+    0% {
+        transform: translateY(0)
+    }
+
+    50% {
+        transform: translateY(-2%)
+    }
+
+    100% {
+        transform: translateY(0)
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .root::before {
+        animation: none;
+    }
+}
