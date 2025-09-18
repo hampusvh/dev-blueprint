@@ -17,9 +17,7 @@ const App = () => {
       </div>
 
       <main className="container">
-        <section id="about" className="section">About</section>
-        <section id="projects" className="section"></section>
-        <section id="contact" className="section">Contact</section>
+
       </main>
 
       <footer className="footer">© {new Date().getFullYear()}</footer>
