@@ -3,7 +3,7 @@ import AuroraExperiment from "../experiments/aurora/AuroraExperiment";
 import PlainExperiment from "../experiments/plain/PlainExperiment";
 import CactusExperiment from "../experiments/cactus/CactusExperiment";
 import NebulaExperiment from "../experiments/nebula/NebulaExperiment";
-import SeaExperiment from "../experiments/sea/SeaExperiment";
+import DuneExperiment from "../experiments/dune/DuneExperiment";
 import ForestExperiment from "../experiments/forest/ForestExperiment"
 import RedMoonExperiment from "../experiments/redmoon/RedMoonExperiment";
 import VoidExperiment from "../experiments/void/VoidExperiment";
@@ -36,25 +36,31 @@ const Gallery = () => {
             </article>
 
             <article className="card">
-                <header className="card__title">Sea</header>
-                <div className="frame"><SeaExperiment /></div>
-                <footer className="card__actions">...</footer>
-            </article>
-
-            <article className="card">
-                <header className="card__title">Forest</header>
-                <div className="frame"><ForestExperiment /></div>
-                <footer className="card__actions">...</footer>
-            </article>
-
-            <article className="card">
-                <header className="card__title">Red Moon</header>
-                <div className="frame"><RedMoonExperiment /></div>
+                <header className="card__title">Dune</header>
+                <div className="frame"><DuneExperiment /></div>
                 <footer className="card__actions">...</footer>
             </article>
 
             <article className="card">
                 <header className="card__title">Void</header>
+                <div className="frame"><ForestExperiment /></div>
+                <footer className="card__actions">...</footer>
+            </article>
+
+            <article className="card">
+                <header className="card__title"></header>
+                <div className="frame"><RedMoonExperiment /></div>
+                <footer className="card__actions">...</footer>
+            </article>
+
+            <article className="card">
+                <header className="card__title"></header>
+                <div className="frame"><VoidExperiment /></div>
+                <footer className="card__actions">...</footer>
+            </article>
+
+            <article className="card">
+                <header className="card__title"></header>
                 <div className="frame"><VoidExperiment /></div>
                 <footer className="card__actions">...</footer>
             </article>

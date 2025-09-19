@@ -9,3 +9,12 @@
         radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 60%),
         linear-gradient(180deg, #4c2344 0%, #2a1d3b 14%, #13172a 38%, #0d0f17 100%);
 }
+
+.root {
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.root:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .18);
+}

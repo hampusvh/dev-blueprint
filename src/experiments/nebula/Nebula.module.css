@@ -1,4 +1,3 @@
-/* PrismFlow.module.css — abstrakt, levande, men elegant */
 .root {
     width: 100%;
     height: 100%;
@@ -8,7 +7,6 @@
     border-radius: 12px;
     isolation: isolate;
 
-    /* Bas: kylig mörk duk + två subtila glöd */
     background:
         radial-gradient(60% 50% at 18% 18%, rgba(255, 210, 140, .08) 0%, transparent 70%),
         radial-gradient(60% 55% at 82% 78%, rgba(120, 220, 255, .08) 0%, transparent 70%),
@@ -16,7 +14,6 @@
     color: #e8eef8;
 }
 
-/* Lager 1: konisk färgfilm som rör sig (prismatisk vätska) */
 .root::before {
     content: "";
     position: absolute;
@@ -24,11 +21,8 @@
     pointer-events: none;
     z-index: 0;
 
-    /* Justerbara rattar */
     --strength: .22;
-    /* total intensitet .12–.30 */
     --blur: 28px;
-    /* hur mjukt färgerna blendas */
 
     background:
         conic-gradient(from 0deg at 50% 50%,
@@ -42,10 +36,10 @@
     mix-blend-mode: screen;
 
     animation: pf-spin 56s linear infinite, pf-breathe 18s ease-in-out infinite;
+    animation-play-state: paused;
     transform-origin: 50% 50%;
 }
 
-/* Lager 2: fin textur + svag diagonal sheen */
 .root::after {
     content: "";
     position: absolute;
@@ -53,7 +47,6 @@
     pointer-events: none;
     z-index: 1;
 
-    /* SVG-brus som grain (mycket svagt) + diagonal glans */
     background:
         url("data:image/svg+xml;utf8,\
 <svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'>\
@@ -63,10 +56,12 @@
         linear-gradient(-18deg, rgba(255, 255, 255, .03), transparent 55%);
     mix-blend-mode: soft-light;
     animation: pf-sheen 40s ease-in-out infinite;
+    animation-play-state: paused;
+    /* 👈 pausad */
     opacity: .8;
 }
 
-/* Keyframes: långsam rotation + mikroskopisk andning + sheen-drift */
+/* Keyframes */
 @keyframes pf-spin {
     from {
         transform: rotate(0deg) scale(1.02);
@@ -103,7 +98,6 @@
     }
 }
 
-/* Respekt för minskad rörelse */
 @media (prefers-reduced-motion: reduce) {
 
     .root::before,

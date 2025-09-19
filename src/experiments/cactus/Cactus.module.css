@@ -5,6 +5,7 @@
     position: relative;
     overflow: hidden;
     border-radius: 12px;
+    isolation: isolate;
 
     background:
         radial-gradient(120% 70% at 50% 18%, rgba(255, 255, 255, .06) 0%, rgba(255, 255, 255, 0) 60%),
@@ -44,10 +45,8 @@
     -webkit-mask:
         linear-gradient(#000 0 0) center / 36% 68% no-repeat,
         radial-gradient(circle, #000 68%, transparent 69%) center 22% / 36% 36% no-repeat,
-
         linear-gradient(#000 0 0) calc(50% - 26%) 46% / 16% 36% no-repeat,
         radial-gradient(circle, #000 70%, transparent 71%) calc(50% - 26%) 30% / 16% 16% no-repeat,
-
         linear-gradient(#000 0 0) calc(50% + 26%) 44% / 16% 34% no-repeat,
         radial-gradient(circle, #000 70%, transparent 71%) calc(50% + 26%) 30% / 16% 16% no-repeat;
     mask:
@@ -59,67 +58,23 @@
         radial-gradient(circle, #000 70%, transparent 71%) calc(50% + 26%) 30% / 16% 16% no-repeat;
 
     animation: cactusSway 18s ease-in-out infinite;
+    animation-play-state: paused;
 }
 
-.root .stars {
-    display: none;
-}
-
-
-.root {
-    --grain: url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'>\
-<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='table' tableValues='0 0 .04 0'/></feComponentTransfer></filter>\
-<rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-}
-
-.root::selection {
-    background: rgba(255, 255, 255, .08);
-}
-
-.root:after {
-    /* behåll dune ovan – redan definierad ovanför; denna extra rad gör inget mer men lämnas för tydlighet */
-}
-
-.root {
-    isolation: isolate;
-}
-
-.root>i {
-    display: none;
-}
-
-/* reserverad */
-
-/* Lååångsam blink i himlen (två små hotspots) */
-.root::marker {
-    content: "";
-}
-
-/* no-op; förhindrar vissa UA-stilar */
-
-.root .twinkle {
-    display: none;
-}
-
-/* hook */
-
-/* Keyframes */
 @keyframes cactusSway {
     0% {
-        transform: translateX(-50%) rotate(-1.5deg)
+        transform: translateX(-50%) rotate(-1.5deg);
     }
 
     50% {
-        transform: translateX(-50%) rotate(1.5deg)
+        transform: translateX(-50%) rotate(1.5deg);
     }
 
     100% {
-        transform: translateX(-50%) rotate(-1.5deg)
+        transform: translateX(-50%) rotate(-1.5deg);
     }
 }
 
-/* Respekt för minskad rörelse */
 @media (prefers-reduced-motion: reduce) {
     .root::before {
         animation: none;
