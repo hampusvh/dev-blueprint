@@ -3,7 +3,7 @@
 Experimental project with CSS and animations to create abstract, artistic designs.  
 Each “canvas” in the gallery represents a standalone concept — ranging from subtle gradients to more vivid, animated backgrounds.
 
-![Gallery preview](assets/gallery.png)
+![Gallery preview](assets/preview.png)
 
 ### Concept
 - Exploring **CSS as a form of art**
